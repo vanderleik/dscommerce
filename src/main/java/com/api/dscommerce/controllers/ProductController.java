@@ -2,6 +2,8 @@ package com.api.dscommerce.controllers;
 
 import com.api.dscommerce.dto.ProductDTO;
 import com.api.dscommerce.services.ProductService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,4 +24,8 @@ public class ProductController {
         return productService.findById(id);
     }
 
+    @GetMapping
+    public Page<ProductDTO> findAll(Pageable pageable) {
+        return productService.findAll(pageable);
+    }
 }
